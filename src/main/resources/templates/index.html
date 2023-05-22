@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/common :: head('HOME')">
+
+</head>
+<script>
+$(document).ready(function(){
+    $('.nv1 div .main1,.sub').mouseover(function(){ //Shopping 에 마우스 오버
+        $('.sub').css('display','block');//유형별 제품 출력
+    });
+    
+    $('.nv1 div .main1,.sub').mouseout(function(){
+        $('.sub').css('display',''); //유형별 제품 출력 안되게 설정
+    });
+    
+    $('.a1,.sub1').mouseover(function(){ //유형별 제품에 마우스 오버
+        $('.sub1').css('display','block');//유형별 항목이 나오게 설정
+    });
+    
+    $('.a1,.sub1').mouseout(function(){//유형별 항목이 안나오게 설정
+        $('.sub1').css('display','');
+    });
+});
+//메인페이지 슬라이드박스
+$(function() {
+	$('.bxslider').bxSlider({ // 클래스명 주의!
+		auto: true, // 자동으로 애니메이션 시작
+		speed: 500,  // 애니메이션 속도
+		pause: 5000,  // 애니메이션 유지 시간 (1000은 1초)
+		mode: 'fade', // 슬라이드 모드 ('fade', 'horizontal', 'vertical' 이 있음)
+		autoControls: true, // 시작 및 중지버튼 보여짐
+		pager: true, // 페이지 표시 보여짐
+		captions: true // 이미지 위에 텍스트를 넣을 수 있음
+	});
+});
+</script>
+<body>
+	<nav class="header-wrap" id="header-wrap" th:replace="fragments/common :: menu('home')">
+
+	</nav>
+    <div class="body-wrap">
+
+    		<div class="imgslide">
+			    <ul class="bxslider">
+					<li><a href="#"><img th:src="@{/img/goods1.jpg}"></a></li>
+					<li><a href="#"><img th:src="@{/img/goods2.jpg}"></a></li>
+					<li><a href="#"><img th:src="@{/img/goods3.jpg}"></a></li>
+				</ul>
+			</div>
+
+			<div class="best">
+				<div class="bestbox1">
+					<p class="besttitle">베스트 상품</p>
+					<div class="more"><a href="#">더보기 〉</a></div>
+				</div>
+				<div class="bestbox2">
+					<div class="bestgoods">
+						<ul >
+							<li class="goods">
+								<div class="thumnail">
+								<a href="#"><img th:src="@{/img/goods13.jpg}"/></a>
+								</div>
+								<div class="describe">
+									<div class="title">
+										<a href="#"><span>샴푸</span></a>
+									</div>
+									<div class="bestlogo">best</div>
+									<ul class="price">
+										<li >
+											<span style="font-size: 20px;color: #000000;font-weight: bold;">10,000원</span>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<!-- 루프돌릴예정 -->
+							<li class="goods"><a href="#"><img th:src="@{/img/goods4.jpg}"/></a></li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods5.jpg}"/></a></li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods6.jpg}"/></a></li>
+						</ul>
+					</div><!-- bestgoods -->
+				</div><!-- bestbox2 -->
+			</div><!-- best -->
+			
+			<div class="new">
+				<div class="newbox1">
+					<p class="newtitle">신상품</p>
+					<div class="more"><a href="#">더보기 〉</a></div>
+				</div>
+				<div class="newbox2">
+					<div class="newgoods">
+						<ul >
+							<li class="goods">
+								<div class="thumnail">
+								<a href="#"><img th:src="@{/img/goods13.jpg}"/></a>
+								</div>
+								<div class="describe">
+									<div class="title">
+										<a href="#"><span>샴푸</span></a>
+									</div>
+									<div class="newlogo">new</div>
+									<ul class="price">
+										<li >
+											<span style="font-size: 20px;color: #000000;font-weight: bold;">10,000원</span>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods7.jpg}"/></a></li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods8.jpg}"/></a></li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods9.jpg}"/></a></li>
+						</ul>
+					</div><!-- newgoods -->
+				</div><!-- newbox2 -->
+			</div><!-- new -->
+			
+			<div class="sale">
+				<div class="salebox1">
+					<p class="saletitle">할인 상품</p>
+					<div class="more"><a href="#">더보기 〉</a></div>
+				</div>
+				<div class="salebox2">
+					<div class="salegoods">
+						<ul >
+							<li class="goods">
+								<div class="thumnail">
+								<a href="#"><img th:src="@{/img/goods13.jpg}"/></a>
+								</div>
+								<div class="describe">
+									<div class="title">
+										<a href="#"><span>샴푸</span></a>
+									</div>
+									<div class="sale_late">40<span style="margin-right:10px">%</span></div>
+									<ul class="price">
+										<li >
+											<span style="font-size: 20px;color: #000000;font-weight: bold;">10,000원</span>
+										</li>
+										<li style="margin-top:5px;">
+											<span style="font-size: 15px;color: #cccccc;text-decoration: line-through;">10,000원</span>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods10.jpg}"/></a></li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods11.jpg}"/></a></li>
+							<li class="goods"><a href="#"><img th:src="@{/img/goods12.jpg}"/></a></li>
+						</ul>
+					</div><!-- salegoods -->
+				</div><!-- salebox2 -->
+			</div><!-- sale -->
+    </div><!-- body-wrap -->
+<footer th:replace="fragments/common :: footer">
+
+</footer>
+</body>
+</html>

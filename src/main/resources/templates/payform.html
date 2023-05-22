@@ -1,0 +1,247 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>결제 페이지</title>
+<link rel="stylesheet" href="/css/style.css?ver=2">
+<script type="text/javascript"
+			src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+.content-wrap .pay{
+	width:1000px;
+	position:relative;
+	margin:0 auto;
+	margin-bottom:500px;
+}
+.content-wrap .pay .pay_left {
+	width:680px;
+	position:relative;;
+}
+.content-wrap .pay .pay_left table {
+	width:650px;
+	position:relative;;
+}
+.content-wrap .pay .pay_right {
+	position:absolute;
+	width:300px;
+	right:0;
+}
+.content-wrap .pay .pay_right .pay_sub {/* 제목 */
+	border-bottom:1px solid #ccc;
+	padding-left:10px;
+	height:50px;
+}
+.content-wrap .pay .pay_right .pay_tr td{
+	height:50px;
+}
+.content-wrap .pay .pay_right .pay_tr .td_left{
+	padding-left:10px;
+}
+.content-wrap .pay .pay_right .pay_tr .td_right{
+	text-align:right;
+}
+/* 수량 */
+.content-wrap .pay .amount {
+	width:30px;
+	height:20px;
+	text-align:center;
+	font-size:12px;
+}
+.content-wrap .pay .amtgroup {
+	position:relative;
+	display: inline-block;
+	width:56px;
+	height:26px;
+	left:0;
+}
+.content-wrap .pay .amountup {
+	position:absolute;
+	height:13px;
+}
+.content-wrap .pay .amountup img{
+	position:absolute;
+}
+.content-wrap .pay .amountdown {
+	position:absolute;
+	bottom:0;
+	height:13px;
+}
+.content-wrap .pay .amountdown img{
+	position:absolute;
+}
+/* 버튼 */
+.content-wrap .pay .paybtn {
+	margin-top:15px;
+	padding-top:30px;
+	border-top:1px solid #f4f4f4;
+	text-align:center;
+}
+.content-wrap .pay .purbtn {
+	background-color:#1242b1;
+	color:#ffffff;
+	border:none;
+	border-radius:2px;
+	width:280px;
+	height:60px;
+}
+.content-wrap .pay .purbtn:hover {
+	background-color:#1230a1;
+}
+</style>
+<body>
+<jsp:include page="top.jsp" />
+	<div class="body-wrap">
+		<div class="headertext"><h1>결제페이지</h1></div>
+			<div class="content-wrap">
+				<div class="pay">
+					<div class="pay_right">
+						<div class="pay_wrap">
+						<table cellspacing="0" width="90%">
+						<tr>
+							<td class="pay_sub" colspan="2"><span style="font-size:24px;"><b>결제 예정금액</b></span></td>
+						</tr>
+						<tr class="pay_tr">
+							<td class="td_left">상품금액</td>
+							<td class="td_right"><span style="font-size:20px;"><b>40,000</b></span>원</td>
+						</tr>
+						<tr class="pay_tr">
+							<td class="td_left">배송비</td>
+							<td class="td_right"><span style="font-size:20px"><b>3,000</b></span>원</td>
+						</tr>
+						<tr class="pay_tr">
+							<td class="td_left">할인금액</td>
+							<td class="td_right"><span style="color:red;"><span style="font-size:20px;"><b>- 10,000</b></span>원</span></td>
+						</tr>
+						<tr class="pay_tr">
+							<td class="td_left"><span style="color:red;">합계</span></td>
+							<td class="td_right"><span style="color:red;"><span style="font-size:36px;"><b>30,000</b></span>원</span></td>
+						</tr>
+						</table>
+							<div>
+								<div class="paybtn">
+									<button type="button" class="purbtn">구매하기</button>
+								</div>
+							</div>
+						</div><!-- pay-wrap -->
+					</div><!-- pay_right -->
+					<div class="pay_left">
+						
+						<table cellspacing="0">
+							<tr height="30px" bgcolor="#f4f4f4">
+								<th colspan="2" width="45%">상품정보</th>
+								<th width="11%">판매가</th>
+								<th width="10%">수량</th>
+								<th width="11%">배송비</th>
+								<th width="13%">총금액</th>
+								<th></th>
+							</tr>
+							<tr class="paylist">
+								<td width="15%">
+									<img src="/img/ball.jpg" width="90px" height="90px" />
+								</td>
+								<td width="35%" class="cart-sub"><span>장난감 공</span></td>
+								<td ><span id="cartprice">20,000원</span></td>
+								<td>
+									<span>
+										<span class="amtgroup">
+											<input type="text" class="amount" value="1"/>
+											<a href="" class="amountup"><img src="/img/btn_quantity_up.gif" /></a>
+											<a href="" class="amountdown"><img src="/img/btn_quantity_down.gif" /></a>
+										</span>
+									</span>
+								</td>
+								<td>3,000원</td>
+								<td><span id="carttotal"><b>20,000원</b></span></td>
+								<td><button>삭제</button></td>
+							</tr>
+							<tr class="paylist">
+								<td width="15%">
+									<img src="/img/ball.jpg" width="90px" height="90px" />
+								</td>
+								<td width="35%" class="cart-sub"><span>장난감 공</span></td>
+								<td ><span id="cartprice">20,000원</span></td>
+								<td>
+									<span>
+										<span class="amtgroup">
+											<input type="text" class="amount" value="1"/>
+											<a href="" class="amountup"><img src="/img/btn_quantity_up.gif" /></a>
+											<a href="" class="amountdown"><img src="/img/btn_quantity_down.gif" /></a>
+										</span>
+									</span>
+								</td>
+								<td>3,000원</td>
+								<td><span id="carttotal"><b>20,000원</b></span></td>
+								<td><button>삭제</button></td>
+							</tr>
+							<tr class="paylist">
+								<td width="15%">
+									<img src="/img/ball.jpg" width="90px" height="90px" />
+								</td>
+								<td width="35%" class="cart-sub"><span>장난감 공</span></td>
+								<td ><span id="cartprice">20,000원</span></td>
+								<td>
+									<span>
+										<span class="amtgroup">
+											<input type="text" class="amount" value="1"/>
+											<a href="" class="amountup"><img src="/img/btn_quantity_up.gif" /></a>
+											<a href="" class="amountdown"><img src="/img/btn_quantity_down.gif" /></a>
+										</span>
+									</span>
+								</td>
+								<td>3,000원</td>
+								<td><span id="carttotal"><b>20,000원</b></span></td>
+								<td><button>삭제</button></td>
+							</tr>
+							<tr class="paylist">
+								<td width="15%">
+									<img src="/img/ball.jpg" width="90px" height="90px" />
+								</td>
+								<td width="35%" class="cart-sub"><span>장난감 공</span></td>
+								<td ><span id="cartprice">20,000원</span></td>
+								<td>
+									<span>
+										<span class="amtgroup">
+											<input type="text" class="amount" value="1"/>
+											<a href="" class="amountup"><img src="/img/btn_quantity_up.gif" /></a>
+											<a href="" class="amountdown"><img src="/img/btn_quantity_down.gif" /></a>
+										</span>
+									</span>
+								</td>
+								<td>3,000원</td>
+								<td><span id="carttotal"><b>20,000원</b></span></td>
+								<td><button>삭제</button></td>
+							</tr>
+							<tr class="paylist">
+								<td width="15%">
+									<img src="/img/ball.jpg" width="90px" height="90px" />
+								</td>
+								<td width="35%" class="cart-sub"><span>장난감 공</span></td>
+								<td ><span id="cartprice">20,000원</span></td>
+								<td>
+									<span>
+										<span class="amtgroup">
+											<input type="text" class="amount" value="1"/>
+											<a href="" class="amountup"><img src="/img/btn_quantity_up.gif" /></a>
+											<a href="" class="amountdown"><img src="/img/btn_quantity_down.gif" /></a>
+										</span>
+									</span>
+								</td>
+								<td>3,000원</td>
+								<td><span id="carttotal"><b>20,000원</b></span></td>
+								<td><button>삭제</button></td>
+							</tr>
+						</table>
+					</div>
+					
+					
+					
+				</div>
+			</div>
+	</div>
+<jsp:include page="bottom.jsp" />
+</body>
+</html>

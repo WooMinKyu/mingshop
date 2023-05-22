@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="fragments/common :: head('회원가입')">
+
+	</head>
+<style>
+
+</style>
+<script>
+$(function() {
+	$('#m_id').keyup(function() {
+			$('#idconfirm').html('');
+		})
+	$('#m_pw').keyup(function() {
+		$('#pwconfirm').html('');
+	})
+	$('#m_name').keyup(function() {
+		$('#nameconfirm').html('');
+	})
+	$('#phone_1').keyup(function() {
+		$('#phoneconfirm').html('');
+	})
+	$('#phone_2').keyup(function() {
+		$('#phoneconfirm').html('');
+	})
+	$('#phone_3').keyup(function() {
+		$('#phoneconfirm').html('');
+	})
+	$('#sample6_detailAddress').keyup(function() {
+		$('#addrconfirm').html('');
+	})
+	
+	$('#m_pw').keyup(function() {
+		$('#pwcconfirm').html($('#pwcconfrim').html());
+			if($('#m_pw').val()=='') {
+				$('#pwcconfirm').html('');
+			}
+		})
+	$('#m_pw_con').keyup(function() {
+			$('#pwcconfirm').css('color','red').html('비밀번호가 일치하지않습니다.')
+			if($('#m_pw_con').val()==$('#m_pw').val()) {
+				$('#pwcconfirm').css('color','#3e4aff').html('비밀번호가 일치합니다.')
+			}
+			if($('#m_pw_con').val()=='') {
+				$('#pwcconfirm').html('');
+			}
+		})
+	
+	$('.regbtn').click(function() {
+		if($('#m_id').val()=='') {
+			$('#idconfirm').html('아이디를 입력해주세요.')
+			
+			if($('#m_pw').val()=='') {
+				$('#pwconfirm').html('비밀번호를 입력해주세요.')
+			}
+			if($('#m_pw_con').val()=='') {
+				$('#pwcconfirm').html('비밀번호 확인을 입력해주세요.')
+			}
+			if($('#m_name').val()=='') {
+				$('#nameconfirm').html('이름를 입력해주세요.')
+			}
+			if($('#phone_1').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_2').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_3').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}
+			if($('#sample6_postcode').val()=='') {
+				$('#addrconfirm').html('우편번호를 체크해주세요.')
+				return false;
+			}
+			if($('#sample6_detailAddress').val()=='') {
+				$('#addrconfirm').html('상세주소를 입력해주세요.')
+			}
+			$('#m_id').focus();
+			return false;
+		}
+		
+		if($('#m_pw').val()=='') {
+			$('#pwconfirm').html('비밀번호를 입력해주세요.')
+			
+			if($('#m_pw_con').val()=='') {
+				$('#pwcconfirm').html('비밀번호 확인을 입력해주세요.')
+			}
+			if($('#m_name').val()=='') {
+				$('#nameconfirm').html('이름를 입력해주세요.')
+			}
+			if($('#phone_1').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_2').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_3').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}
+			if($('#sample6_postcode').val()=='') {
+				$('#addrconfirm').html('우편번호를 체크해주세요.')
+				return false;
+			}
+			if($('#sample6_detailAddress').val()=='') {
+				$('#addrconfirm').html('상세주소를 입력해주세요.')
+			}
+			$('#m_pw').focus();
+			return false;
+		}
+		
+		if($('#m_pw_con').val()=='') {
+			$('#pwcconfirm').html('비밀번호 확인을 입력해주세요.')
+			if($('#m_name').val()=='') {
+				$('#nameconfirm').html('이름를 입력해주세요.')
+			}
+			if($('#phone_1').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_2').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_3').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}
+			if($('#sample6_postcode').val()=='') {
+				$('#addrconfirm').html('우편번호를 체크해주세요.')
+				return false;
+			}
+			if($('#sample6_detailAddress').val()=='') {
+				$('#addrconfirm').html('상세주소를 입력해주세요.')
+			}
+			$('#m_pw_con').focus();
+			return false;
+		}
+		
+		if($('#m_name').val()=='') {
+			$('#nameconfirm').html('이름를 입력해주세요.')
+			if($('#phone_1').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_2').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_3').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}
+			if($('#sample6_postcode').val()=='') {
+				$('#addrconfirm').html('우편번호를 체크해주세요.')
+				return false;
+			}
+			if($('#sample6_detailAddress').val()=='') {
+				$('#addrconfirm').html('상세주소를 입력해주세요.')
+			}
+			$('#m_name').focus();
+			return false;
+		}
+		
+		if($('#phone_1').val()=='') {
+			$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			$('#phone_1').focus();
+			return false;
+		}else if($('#phone_2').val()=='') {
+			$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			$('#phone_2').focus();
+			return false;
+		}else if($('#phone_3').val()=='') {
+			$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			$('#phone_3').focus();
+			return false;
+		}
+		if($('#sample6_postcode').val()=='') {
+			$('#addrconfirm').html('우편번호를 체크해주세요.')
+			return false;
+		}
+		if($('#sample6_detailAddress').val()=='') {
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			return false;
+		}
+		if($('#m_pw_con').val()!=$('#m_pw').val()) {
+			$('#pwcconfirm').css('color','#3e4aff').html('비밀번호가 일치하지않습니다.')
+			return false;
+		}
+		$('#regform').submit();
+	})
+})
+</script>
+</head>
+<body>
+	<nav class="header-wrap" id="header-wrap" th:replace="fragments/common :: menu('register')">
+
+	</nav>
+	<div class="body-wrap">
+		<div class="headertext"><h1>회원가입</h1></div>
+			<div class="content-wrap">
+				<form th:action="@{/account/register}" method="post" id="regform">
+					<div class="reg">
+						<h2>회원 가입하기</h2>
+						<div>
+						<table>
+						<tr>
+							<td class="reg_left"><span class="require">*</span>아이디</td>
+							<td><input type="text" id="m_id" name="username"  />
+							<span id="idconfirm"></span></td>
+						</tr>
+						<tr>
+							<td class="reg_left"><span class="require">*</span>비밀번호</td>
+							<td><input type="password" id="m_pw" name="password" />
+							<span id="pwconfirm"></span></td>
+						</tr>
+						<tr>
+							<td class="reg_left"><span class="require">*</span>비밀번호 확인</td>
+							<td><input type="password" id="m_pw_con" name="m_pw_con" />
+							<span id="pwcconfirm"></span></td>
+						</tr>
+						<tr>
+							<td class="reg_left"><span class="require">*</span>이름</td>
+							<td><input type="text" id="m_name" name="name" />
+							<span id="nameconfirm"></span></td>
+						</tr>
+						<tr>
+							<td class="reg_left">이메일</td>
+							<td><input type="text" id="email_1" name="email_1" /> @ <input type="text" name="email_2" />
+							<select id="email_2">
+								<option value="선택해주세요">선택해주세요.</option>
+								<option value="naver.com">naver.com</option>
+								<option value="hanmail.net">hanmail.net</option>
+								<option value="daum.net">daum.net</option>
+								<option value="nate.com">nate.com</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="hotmail.com">hotmail.com</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="reg_left"><span class="require">*</span>휴대폰번호</td>
+							<td><input type="text" id="phone_1" name="phone_1" />
+							- <input type="text" id="phone_2" name="phone_2" />
+							- <input type="text" id="phone_3" name="phone_3" />
+							<div><span id="phoneconfirm"></span></div></td>
+						</tr>
+						<tr>
+							<td class="reg_left"><span class="require">*</span>주소</td>
+							<td><input type="text" id="sample6_postcode" placeholder="우편번호" name="postcode">
+							<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><span id="addrconfirm"></span><br>
+							<input type="text" id="sample6_address" placeholder="주소" name="address"><br>
+							<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="detailaddress">
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목" name="extraAddress" disabled></td>
+						</tr>
+						</table>
+						</div>
+						<div style="text-align:center">
+						<button type="button" class="regbtn">가입하기</button>
+						<button type="button" onclick="javascript:history.back()">취소</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		
+		</div>
+
+		<footer th:replace="fragments/common :: footer">
+
+		</footer>	
+</body>
+</html>

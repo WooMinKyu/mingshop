@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+	<head th:fragment="head(title)">
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<script th:src="@{/js/script.js}"></script>
+		<!-- 이미지슬라이더 css,js -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+			crossorigin="anonymous"></script>
+		<!-- JQuery -->
+		<!-- <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> -->
+		<script th:src="@{/js/addr.js}"></script>
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script><!-- 주소 API -->
+
+		<title th:text="${title}">Hello, Spring Boot!</title>
+
+	</head>
+	<nav class="header-wrap" id="header-wrap" th:fragment="menu(menu)">
+		<div	class="box1">
+			<div class="wrap">
+				<ul class="login">
+					<li>
+						<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+							<span class="text-white" sec:authentication="name">사용자</span>
+							<button type="submit">로그아웃</button>
+						</form>
+					</li>
+					<li><a sec:authorize="!isAuthenticated()" th:href="@{/account/login}">로그인</a></li>
+					  
+					<li><a sec:authorize="!isAuthenticated()" th:href="@{/account/register}">회원가입</a></li>
+					<li class="last"><a href="#">고객센터</a></li>
+			  </ul>
+		  </div>
+		</div><!-- box1 -->
+	  <div class="box2">
+		  <div class="left">
+			  <a th:href="@{/}" ><b>MingShop</b></a>
+		  </div>
+		  <div class="center">
+			  <div class="search">
+				  <form method="GET" > 
+					  <input name="keyword" id="searchText" type="text" placeholder="검색어를 입력하세요.">
+					  <input type="image" id="searchBtn" th:src="@{/img/search_icon.png}" width="28px" height="28px">
+				  </form>
+			  </div>
+			  
+			  <!-- 상단 로그인쪽 -->
+				  <ul class="right">
+					   <li><a href="/MyPage.jsp"><img src="/img/mypage_icon.png">
+					   <p>마이페이지</p></a></li>
+					  <li><a href="Cart.jsp"><img src="/img/cart_icon.png">
+					  <p>장바구니</p></a></li>
+				  </ul><!-- right -->
+		  </div><!-- center -->
+	  </div><!-- box2 -->
+	  <div class="box3"><!-- 상단바 메뉴 -->
+		  <div class="wrap">
+			  <ul class="menu">
+				  <li><a href="#">사료</a></li>
+				  <li><a href="#">간식</a></li>
+				  <li><a href="#">식기/산책</a></li>
+				  <li><a href="#">위생/장난감</a></li>
+				  <li class="line"><a href="#">미용/목욕</a></li>
+				  <li><a href="#">신상품</a></li>
+				  <li><a href="#">베스트 상품</a></li>
+				  <li><a href="#">세일 상품</a></li>
+			  </ul><!-- menu -->
+		  </div>
+	  </div><!-- box3 --> 
+	</nav>
+
+	<footer><!-- 하단 -->
+		<div>회사 정보</div><br><br>
+		<span>회사명</span> (주)Ming PetShop <span class="tap"></span>
+		<span>대표</span> 김대표
+		<span class="tap">대표전화</span> 02-1234-9876 <span class="tap">팩스</span> 02-456-1234<br><br>
+		<span>주소</span> 서울특별시 XX구 XX로 XX동 XX번지 <span class="tap"></span>
+		<span>이메일</span> abc1234@abc.com
+	</footer>
+</html>

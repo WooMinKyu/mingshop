@@ -1,0 +1,163 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 상세페이지</title>
+<link rel="stylesheet" href="/css/style.css?ver=2">
+<script type="text/javascript"
+			src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+/* 상품 상세페이지 설정 */
+.content-wrap .detail {
+	width:900px;
+	height:450px;
+	position:relative;
+	margin:0 auto;
+	margin-top:100px;
+}
+.content-wrap .detail .d_left {
+	width:445px;
+	position:absolute;
+	left:0;
+}
+.content-wrap .detail .d_right {
+	width:445px;
+	position:absolute;
+	right:0;
+}
+.content-wrap .detail .d_right .d_sub {/* 제목 */
+	border-bottom:1px solid #aeaeae;
+	padding:0 0 25px 0;
+	height:100px;
+}
+.content-wrap .detail .d_right .d_price {
+	height:50px;
+}
+.content-wrap .detail .d_right .d_discount {
+	padding-bottom:150px;;
+	height:50px;
+}
+/* 수량 */
+.content-wrap .detail .amount {
+	width:30px;
+	height:20px;
+	text-align:center;
+	font-size:12px;
+}
+.content-wrap .detail .amtgroup {
+	position:relative;
+	display: inline-block;
+	width:56px;
+	height:26px;
+	left:0;
+}
+.content-wrap .detail .amountup {
+	position:absolute;
+	height:13px;
+}
+.content-wrap .detail .amountup img{
+	position:absolute;
+}
+.content-wrap .detail .amountdown {
+	position:absolute;
+	bottom:0;
+	height:13px;
+}
+.content-wrap .detail .amountdown img{
+	position:absolute;
+}
+/* 버튼 */
+.content-wrap .detail .goodsbtn {
+	margin-top:10px;
+	padding-top:20px;
+	border-top:1px solid #f4f4f4;
+	text-align:right;
+}
+.content-wrap .detail .goodsbtn button {
+	width:180px;
+	height:60px;
+}
+.content-wrap .detail .purbtn {
+	background-color:#1242b1;
+	color:#ffffff;
+	border:none;
+	border-radius:2px;
+	margin-left:10px;
+}
+.content-wrap .detail .purbtn:hover {
+	background-color:#1230a1;
+}
+</style>
+<body>
+<jsp:include page="top.jsp" />
+	<div class="body-wrap">
+		<div class="content-wrap">
+			<div class="detail">
+					<div class="d_left">
+						<img src="/img/brush2.jpg" width="445px" height="445px;" />
+					</div>
+					
+					<div class="d_right">
+						<div class="d_wrap">
+						<table cellspacing="0" width="445px">
+						<tr>
+							<td class="d_sub" colspan="2"><span style="font-size:24px;"><b>강아지 털 브러쉬강아지 털 브러쉬</b></span></td>
+						</tr>
+						<tr>
+							<td class="d_price" colspan="2"><span style="text-decoration:line-through;color:#ccc;font-size:24px;">40,000<span style="font-size:16px;">원</span></span></td>
+						</tr>
+						<tr>
+							<td class="d_discount" colspan="2"><span style="color:red;font-size:24px"><b>10%</b></span><span style="margin-left:5px;font-size:20px"><b style="font-size:40px">30,000</b>원</span></td>
+						</tr>
+						<tr bgcolor="#f4f4f4">
+							<td style="padding-left:20px;height:50px;">
+								<span class="amtgroup">
+									<input type="text" class="amount" value="1"/>
+									<a href="" class="amountup"><img src="/img/btn_quantity_up.gif" /></a>
+									<a href="" class="amountdown"><img src="/img/btn_quantity_down.gif" /></a>
+								</span>
+							</td>
+							<td style="font-size:30px;text-align:right;padding-right:10px;"><b>30,000</b><span style="font-size:20px">원</span></td>
+						</tr>
+						</table>
+						</div>
+							<div style="position:relative;">
+								<div class="goodsbtn">
+									<button type="button">장바구니 담기</button>
+									<button type="button" class="purbtn">구매하기</button>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<!-- <div class="d_right">
+						<div class="d_right_top">
+							<span style="font-size:22px;"><b>강아지 털 브러쉬강아지 털 브러쉬</b></span>
+						</div>
+						<div class="d_right_bottom">
+							<div><span style="text-decoration:line-through;color:#ccc;font-size:24px;">40,000<span style="font-size:16px;">원</span></span></div>
+							<span style="color:red;font-size:24px"><b>10%</b></span><span style="margin-left:5px;font-size:20px"><b style="font-size:30px">30,000</b>원</span>
+							<div style="background-color:#f4f4f4;text-align:right;padding-right:10px">
+								<span class="amtgroup">
+									<input type="text" class="amount" value="1"/>
+									<a href="" class="amountup"><img src="/Project/img/btn_quantity_up.gif" /></a>
+									<a href="" class="amountdown"><img src="/Project/img/btn_quantity_down.gif" /></a>
+								</span>
+								<span style="font-size:30px"><b>30,000</b>원</span>
+							</div>
+							<div class="goodsbtn">
+								<button type="button">장바구니 담기</button>
+								<button type="button" class="purbtn">구매하기</button>
+							</div>
+						</div>
+					</div> -->
+			</div>
+		</div>
+	</div>
+<jsp:include page="bottom.jsp" />
+</body>
+</html>

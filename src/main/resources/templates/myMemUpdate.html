@@ -1,0 +1,299 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원수정</title>
+<link rel="stylesheet" href="/css/style.css?ver=2">
+<script type="text/javascript"
+			src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<style>
+/* 마이페이지 설정 */
+.content-wrap .mypage{
+	width:1200px;
+	margin:0 auto;
+	padding:50px;
+	border:1px solid red;
+}
+/* 마이페이지 사이드메뉴 설정 */
+.content-wrap .mypage .my_left {
+	width:200px;
+	border-radius:20px;
+	background-color:#f4f4f4;
+	box-shadow:1px 1px 3px black;
+}
+.content-wrap .mypage .my_left li {
+	padding:20px;
+	float:none;
+	text-align:center;
+	color:black;
+	font-size:14px;
+}
+.content-wrap .mypage .my_left li.first {
+	padding-top:35px;
+}
+.content-wrap .mypage .my_left li.last {
+	padding-bottom:35px;
+}
+.content-wrap .mypage .my_left li a {
+	color:black;
+}
+.content-wrap .mypage .my_left li a:hover {
+	color:gray;
+}
+/* 마이페이지 컨텐츠부분 설정 */
+.content-wrap .mypage .my_right {
+	width:800px;
+	float:right;
+	padding:0 200px 100px 0;
+}
+.content-wrap .reg h2{
+	width:550px;
+	margin:0 auto;
+}
+.content-wrap .reg table {
+	width:550px;
+	height:500px;
+	margin:40px auto;
+	border:1px solid gray;
+}
+.content-wrap .reg .require {
+	color:red;
+}
+.content-wrap .reg #idconfirm,#pwconfirm,#pwcconfirm,#nameconfirm,#phoneconfirm,#addrconfirm {
+	color:red;
+	font-size:12px;
+	margin-left:20px;
+}
+.content-wrap .reg .reg_left {
+	width:100px;
+	font-size:13px;
+	padding-left:15px;
+}
+.content-wrap .reg input[name=m_id] {
+	width:120px;
+	height:15px;
+	margin:10px 0 10px 10px;
+	padding:5px;
+}
+.content-wrap .reg input[type=password] {
+	width:120px;
+	height:15px;
+	margin:10px 0 10px 10px;
+	padding:5px;
+}
+.content-wrap .reg input[name=m_name] {
+	width:120px;
+	height:15px;
+	margin:10px 0 10px 10px;
+	padding:5px;
+}
+.content-wrap .reg input[name=email_1] {
+	width:100px;
+	height:15px;
+	margin:10px 0 10px 10px;
+	padding:5px;
+}
+ .content-wrap .reg input[name=email_2] {
+ 	width:100px;
+	height:15px;
+	margin:10px 0;
+	padding:5px;
+ }
+  .content-wrap .reg input[name=phone_1] {
+ 	width:70px;
+	height:15px;
+	margin:10px 0 0 10px;
+	padding:5px;
+ }
+  .content-wrap .reg input[name=phone_2] {
+ 	width:70px;
+	height:15px;
+	margin:10px 0;
+	padding:5px;
+ }
+  .content-wrap .reg input[name=phone_3] {
+ 	width:70px;
+	height:15px;
+	margin:10px 0;
+	padding:5px;
+ }
+ #sample6_postcode {
+ 	width:100px;
+	height:15px;
+	margin:10px 0 0 10px;
+	padding:5px;
+ }
+ #sample6_address {
+ 	width:350px;
+	height:15px;
+	margin:10px 0 0 10px;
+	padding:5px;
+ }
+  #sample6_detailAddress {
+ 	width:150px;
+	height:15px;
+	margin:10px 0 0 10px;
+	padding:5px;
+ }
+ #sample6_extraAddress {
+ 	width:150px;
+	height:15px;
+	margin:10px 0;
+	padding:5px;
+ }
+.content-wrap .reg button {
+	width:250px;
+	height:40px;
+	margin-top:20px;
+}
+
+.content-wrap .reg .upbtn {
+	background-color:#1242b1;
+	color:#ffffff;
+	border:none;
+	border-radius:5px;
+	margin:0 20px 100px 0;
+	
+}
+.content-wrap .reg .upbtn:hover {
+	background-color:#1230a1;
+}
+</style>
+<script>
+$(function() {
+	
+	$('.upbtn').click(function() {
+		
+		if($('#m_pw').val()=='') {
+			$('#pwconfirm').html('비밀번호를 입력해주세요.')
+			
+			if($('#phone_1').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_2').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}else if($('#phone_3').val()=='') {
+				$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			}
+			if($('#sample6_postcode').val()=='') {
+				$('#addrconfirm').html('우편번호를 체크해주세요.')
+				return false;
+			}
+			if($('#sample6_detailAddress').val()=='') {
+				$('#addrconfirm').html('상세주소를 입력해주세요.')
+			}
+			$('#m_pw').focus();
+			return false;
+		}
+		
+		if($('#phone_1').val()=='') {
+			$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			$('#phone_1').focus();
+			return false;
+		}else if($('#phone_2').val()=='') {
+			$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			$('#phone_2').focus();
+			return false;
+		}else if($('#phone_3').val()=='') {
+			$('#phoneconfirm').html('휴대폰번호를 입력해주세요.')
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			$('#phone_3').focus();
+			return false;
+		}
+		if($('#sample6_postcode').val()=='') {
+			$('#addrconfirm').html('우편번호를 체크해주세요.')
+			return false;
+		}
+		if($('#sample6_detailAddress').val()=='') {
+			$('#addrconfirm').html('상세주소를 입력해주세요.')
+			return false;
+		}
+		if($('#m_pw_con').val()!=$('#m_pw').val()) {
+			$('#pwcconfirm').css('color','#3e4aff').html('비밀번호가 일치하지않습니다.')
+			return false;
+		}
+		document.getElementById('memupform').submit();
+	})
+})
+</script>
+<body>
+<jsp:include page="top.jsp" />
+	<div class="body-wrap">
+		<div class="headertext"><h1>마이페이지</h1></div>
+			<div class="content-wrap">
+				<div class="mypage">
+					<div class="my_right">
+						<form action="" method="post" id="memupform">
+							<div class="reg">
+								<h2>회원 수정하기</h2>
+								<div>
+								<table>
+									<tr>
+										<td class="reg_left">아이디</td>
+										<td><input type="text" id="m_id" name="m_id"  disabled/>
+									</tr>
+									<tr>
+										<td class="reg_left">비밀번호</td>
+										<td><input type="password" id="m_pw" name="m_pw" />
+										<span id="pwconfirm"></span></td>
+									</tr>
+									<tr>
+										<td class="reg_left">이름</td>
+										<td><input type="text" id="m_name" name="m_name" disabled/>
+										<span id="nameconfirm"></span></td>
+									</tr>
+									<tr>
+										<td class="reg_left">이메일</td>
+										<td><input type="text" id="email_1" name="email_1" /> @ <input type="text" name="email_2" />
+										<select id="email_2">
+											<option value="선택해주세요">선택해주세요.</option>
+											<option value="naver.com">naver.com</option>
+											<option value="hanmail.net">hanmail.net</option>
+											<option value="daum.net">daum.net</option>
+											<option value="nate.com">nate.com</option>
+											<option value="gmail.com">gmail.com</option>
+											<option value="hotmail.com">hotmail.com</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td class="reg_left">휴대폰번호</td>
+										<td><input type="text" id="phone_1" name="phone_1" />
+										- <input type="text" id="phone_2" name="phone_2" />
+										- <input type="text" id="phone_3" name="phone_3" />
+										<div><span id="phoneconfirm"></span></div></td>
+									</tr>
+									<tr>
+										<td class="reg_left">주소</td>
+										<td><input type="text" id="sample6_postcode" placeholder="우편번호" disabled>
+										<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><span id="addrconfirm"></span><br>
+										<input type="text" id="sample6_address" placeholder="주소" disabled><br>
+										<input type="text" id="sample6_detailAddress" placeholder="상세주소">
+										<input type="text" id="sample6_extraAddress" placeholder="참고항목" disabled></td>
+									</tr>
+								</table>
+								</div>
+								<div style="text-align:center">
+								<button type="button" class="upbtn">수정하기</button>
+								<button type="button" onclick="javascript:location.href='/Project/MyPage.jsp'">취소</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<ul class="my_left">
+						<li class="first"><a href="#">구매내역</a></li>
+						<li><a href="#">내가 쓴 Q&A</a></li>
+						<li><a href="/Project/MyMemCheck.jsp?member=update" id="update" style="color:#1242b1;font-weight:bold;">회원정보수정</a></li>
+						<li class="last"><a href="/Project/MyMemCheck.jsp?member=cancel" id="cancel">회원탈퇴</a></li>
+					</ul>
+					
+				</div>
+		</div>
+	</div>
+<jsp:include page="bottom.jsp" />
+</body>
+</html>
